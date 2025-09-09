@@ -1,38 +1,42 @@
 <?php
-$num  = 15;
-if ($num > 10) {
-    var_dump('suurem');
-} else {
 
-};
+for($i=0; $<10;$i++){
+    var_dump($i);
+}
 
+for($i=10;$i>0;$i--){
+    var_dump($i);
+}  
 
-$day = date('w', strtotime('2023-06-19'));
-var_dump($day);
-switch($day) {
-    case 1:
-        var_dump('esmaspäev');
-        break;
-    case 2:
-        var_dump('teisipäev');
-        break;
-    case 3:
-        var_dump('kolmapäev');
-        break;
-    case 4:
-        var_dump('neljapäev');
-        break;
-    case 5:
-        var_dump('reede');
-        break;
-    case 6:
-        var_dump('laupäev');
-        break;
-    case 0:
-        var_dump('pühapäev');
-        break;
-    default:
-        var_dump('tundmatu päev');
-        break;
+for($i=1;$i<1000000;$i*=2){
+    var_dump($i);
+}
+
+for(;;){
 
 }
+
+$time = time()
+while(time()<$time+10){
+    var_dump(time());
+    $i++;
+}
+var_dump($i);
+
+$i = 10;
+while($i < 10){
+    var_dump('WHILE');
+}
+do {
+    var_dump('DO');
+} while($i <10);
+
+$array = [1,2,3];
+foreach($array as $value){
+    var_dump($value);
+};
+
+$a = 1;
+$b =$a;
+$b = 2;
+var_dump($a);
