@@ -1,53 +1,54 @@
 <?php
 
-for($i=0; $i<10; $i++){
-    var_dump($i);
+function hello() {
+    var_dump('Hello');
 }
 
-for($i=10;$i>0;$i--){
-    var_dump($i);
-}  
+hello();
+hello();
+hello();
 
-for($i=1;$i<1000000;$i*=2){
-    var_dump($i);
+funcito helloName($name = 'Unknown'){
+    var_dump('Hello' . $name);
 }
 
-// Infinite loop removed for safety
+helloName('Ivan');
+helloName('Gratsov');
+helloNmae();
 
-
-$time = time();
-$i = 0;
-while(time() < $time + 10){
-    var_dump(time());
-    $i++;
-}
-var_dump($i);
-
-
-$i = 10;
-while($i < 10){
-    var_dump('WHILE');
-}
-do {
-    var_dump('DO');
-} while($i < 10);
-
-
-$array = [1,2,3];
-foreach($array as $value){
-    var_dump($value);
+function helloNameAndAge($name = 'Unknown', $age){
+    var_dump("Hello  $name and you are  $age  years old");
 }
 
+healloNameAndAge('Ivan', 30);
 
-$a = 1;
-$b = $a;
-$b = 2;
-var_dump($a);
-
-
-$array = [1,2,3];
-foreach($array as &$value){
-    $value *= 2;
+function stuff(...$args){
+    var_dump($args);
 }
-unset($value); // break reference
-var_dump($array);
+stuff(1,2,3,4,5,6,7,8,9);
+
+function sum($a, $b){
+    return $a + $b;
+    var_dump('This will never be executed');
+}
+
+$answer = sum(2,3);
+var_dump($answer);
+
+function biggerOrSmaller($a){
+    if($a > 0){
+        return 'Bigger';
+    } 
+        return 'Smaller';
+}
+
+var_dump(biggerOrSmaller(15));
+var_dump(biggerOrSmaller(5));
+
+
+function recursive($i) {
+    if($i < 10 ) {
+        var_dump($i);
+        recursive($i + 1);
+    }
+}
