@@ -1,19 +1,19 @@
 <?php
 $posts = [
-  ['title' => 'World news 1',
+['title' => ' U.S news 1',
    'published' => '16.09.2025',
    'author' => 'Ivan',
-   'body' => 'some world news body 1'
+   'body' => 'some U.S news body 1'
 ],
-['title' => 'World news 2',
+['title' => 'U.S news 2',
    'published' => '16.09.2024',
    'author' => 'simon',
-   'body' => 'some world news body 2'
+   'body' => 'some U.S news body 2'
 ],
-['title' => 'World news 3',
+['title' => 'U.S news 3',
    'published' => '16.09.2023',
    'author' => 'anatoly',
-   'body' => 'some world news body 3'
+   'body' => 'some U.S news body 3'
 ]
 ];
 ?>
