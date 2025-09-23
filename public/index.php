@@ -3,12 +3,30 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
     return false;    // serve the requested resource as-is.
 }
 
+function dump(...$args){
+    echo'<pre>';
+    var_dump(...$args);
+    echo'</pre>';
+}
 
-echo '<pre>';
-var_dump($_SERVER);
-echo '</pre>';
+spl_autoload_register(function ($class){
+    $class = substr($class, 4);
+    require_once __DIR__ ."/../src/$class.php";
+});
 
-switch ($server['REQUEST_URI']) {
+//require_once __DIR__ .'/../src/Router.php';
+//require_once __DIR__ .'/../src/DB.php';  
+use App\controllers\PublicController as PC;
+
+
+$router = new App\Router();
+dump($router);
+$db = new App\DB();
+dump($db);
+$controller = new App\controllers\PublicController();
+
+
+switch ($_SERVER['REQUEST_URI']) {
     case '/';
         $posts = [
             [
