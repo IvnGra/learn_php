@@ -13,22 +13,9 @@ spl_autoload_register(function ($class){
     $class = substr($class, 4);
     require_once __DIR__ ."/../src/$class.php";
 });
-
-//require_once __DIR__ .'/../src/Router.php';
-//require_once __DIR__ .'/../src/DB.php';  
-use App\controllers\PublicController as PC;
-
-
-$router = new App\Router();
-dump($router);
-$db = new App\DB();
-dump($db);
-$controller = new App\controllers\PublicController();
-
-
-switch ($_SERVER['REQUEST_URI']) {
-    case '/';
-        $posts = [
+use App\Router;
+Router::addRoute('/',function () {
+     $posts = [
             [
                 'title' => 'World news 1',
                 'published' => '16.09.2025',
@@ -48,11 +35,11 @@ switch ($_SERVER['REQUEST_URI']) {
                 'body' => 'some world news body 3'
             ]
         ];
+        include __DIR__ . '/../views/index.php';
+});
 
-        include __DIR__ . '/../views/home.php';
-        break;
-    case '/us';
-        $posts = [
+Router::addRoute('/us', function () {
+    $posts = [
             [
                 'title' => ' U.S news 1',
                 'published' => '16.09.2025',
@@ -73,9 +60,13 @@ switch ($_SERVER['REQUEST_URI']) {
             ]
         ];
         include __DIR__ . '/../views/us.php';
-        break;
-    default:
-        http_response_code(404);
-        echo '404 Page not found';
-        break;
+});
+$router = new App\Router($_SERVER['REQUEST_URI']);
+$match = $router->match();
+if($match){
+    call_user_func($match['action']);
+}else{
+    echo '<img scr="https://http.cat/404>"';
 }
+
+
