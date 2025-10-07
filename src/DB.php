@@ -22,11 +22,11 @@ class DB
 
     public function all($table, $class)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM $table");
+        $stmt = $this->conn->prepare("SELECT * FROM $table where id=$id");
         $stmt->execute();
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
-        return $stmt->fetchAll();
+        return $stmt->fetch();
     }
 
     public function insert($table, $fields)
@@ -39,6 +39,28 @@ class DB
         $sql = "INSERT INTO $table ($fieldNamesText)
                 VALUES ('$fieldValuesText')";
         // use exec() because no results are returned
+        $this->conn->exec($sql);
+    }
+
+    public function update($table, $fields, $id) {
+        $updateText = '';
+        foreach($fields as $key=>$value){
+            $updateText.="$key='$value', ";
+        }
+        $updateText = rtrim($updateText, 0, -2);
+        dump($updateText);
+      $sql = "UPDATE MyGuests SET lastname='Doe', bla='something' WHERE id=$id";
+        dd($sql);
+        // Prepare statement
+        $stmt = $conn->prepare($sql);
+
+        // execute the query
+        $stmt->execute();
+        }
+
+        public function delete($table, $id){
+        $sql = "DELTE FROM $table WHERE id=$id";
+
         $this->conn->exec($sql);
     }
 }
