@@ -65,12 +65,12 @@ class PublicController
         view('us', compact('posts'));
     }
 
-    public function form() {
+    public function form(){
         view('form');
     }
 
     public function answer(){
-        view('answer');
+        dump($_GET);
+        dump($_POST);
     }
-    
 }
