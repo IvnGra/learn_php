@@ -1,15 +1,28 @@
-<?php include __DIR__ . '/partials/header.php'; ?>
+<?php include __DIR__ . '/../partials/header.php'; ?>
     <main class="container">
-      <?php include __DIR__ . '/partials/hero.php'; ?>
-      <?php include __DIR__ . '/partials/featured.php'; ?>
+        <table class="table table-striped table-hover">
+          <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Actions</th>
+          </thead>
+          <tbody>
+            <?php foreach($posts as $post): ?>
+            <tr>
+              <td><?= $post->id ?></td>
+              <td><?= $post->title ?></td>
+              <td>
+                  <div class = "btn-group" role="group" aria-label="Basic example">
+                    <a class= "btn btn-info">view</a>
+                    <a class ="btn btn-warning">edit</a>
+                    <a class ="btn btn-danger">delete</a>
 
-      <div class="row g-5">
-        <div class="col-md-8">
-            <?php include __DIR__ . '/partials/posts.php'; ?>
-        </div>
-        <div class="col-md-4">
-          <?php include __DIR__ . '/partials/sidebar.php'; ?>
-        </div>
-      </div>
+                    </div>
+                  </td>
+            </tr>
+            <?php endforeach?>
+          </tbody>
+        </table>
+     
     </main>
-<?php include __DIR__ . '/partials/footer.php'; ?>
+<?php include __DIR__ . '/../partials/footer.php'; ?>
